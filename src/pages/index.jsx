@@ -2,7 +2,7 @@ import Image from 'next/image'
 import Head from 'next/head'
 import Header from './header'
 import { IoCloudDownload, IoCall, IoCodeSlash, IoServer, IoBuild } from 'react-icons/io5'
-
+import {BsWindows} from 'react-icons/bs'
 import Titulo from '@/components/titulo'
 import Tarjeta from '@/components/tarjeta/grande'
 import TarjetaChica from '@/components/tarjeta/chica'
@@ -13,11 +13,15 @@ import { FaGithub } from 'react-icons/fa'
 import { BsLinkedin } from 'react-icons/bs'
 
 
-import { useEffect } from 'react'
+import { useEffect, useRef } from 'react'
 
 export default function Home() {
 
   let tituto = "Boschi Albano Jose"
+
+  const SobreMi = useRef(null);
+  const MisProyectos = useRef(null);
+  const DatoContacto = useRef(null);
 
   useEffect(() => {
 
@@ -58,7 +62,7 @@ export default function Home() {
       <link rel="icon" href="/favicon.ico" />
     </Head>
 
-    <Header />
+    <Header SobreMi={SobreMi} DatoContacto={DatoContacto} MisProyectos={MisProyectos}/>
 
 
     <div className="flex flex-col justify-center items-center h-auto pt-[100px] px-3 sm:px-20">
@@ -79,21 +83,21 @@ export default function Home() {
 
           <a href='./CV.pdf' download={"Boschi Albano Jose"} className="saltar bg-gradient-to-r from-[#EA546C] to-[#598CBE] text-center font-[Merienda] rounded-md text-black text-2xl p-2 flex justify-center items-center gap-3"> Descargar CV<IoCloudDownload /></a>
 
-          <button className="saltar bg-gradient-to-r from-[#EA546C] to-[#598CBE] text-center font-[Merienda] rounded-md text-black text-2xl p-2 flex justify-center items-center gap-3"> Contactame <IoCall /></button>
+          <button onClick={() => DatoContacto.current.scrollIntoView({ behavior: 'smooth' })} className="saltar bg-gradient-to-r from-[#EA546C] to-[#598CBE] text-center font-[Merienda] rounded-md text-black text-2xl p-2 flex justify-center items-center gap-3"> Contactame <IoCall /></button>
 
         </div>
 
       </div>
 
       {/* Quien Soy? */}
-      <div className="saltar Columnas mt-[100px] p-0  sm:border sm:border-black sm:p-10 rounded-sm shadow-xl">
+      <div ref={SobreMi} className="saltar Columnas mt-[100px] p-0  sm:border sm:border-black sm:p-10 rounded-sm shadow-xl">
 
         <Image alt='Boschi Albano Jose' src={"/Foto.jpg"} height={250} width={250} className="rounded-full"></Image>
 
-        <div className="w-full flex flex-col text-start text-[rgba(255,255,255,0.9)]">
+        <div className="w-full flex flex-col items-center sm:items-start text-start text-[rgba(255,255,255,0.9)]">
 
-          <div className="w-[200px] flex flex-row text-center bg-gradient-to-r from-[#EA546C] to-[#598CBE] text-transparent bg-clip-text items-baseline gap-3">
-            <h1 className="text-[50px] font-bold  text-left font-[Merienda] w-[200px]">Sobre mí</h1>
+          <div className="w-[200px] flex flex-row text-center justify-center bg-gradient-to-r from-[#EA546C] to-[#598CBE] text-transparent bg-clip-text items-baseline gap-3">
+            <h1 className="text-[40px] sm:text-[50px] font-bold  text-left font-[Merienda] w-[200px]">Sobre mí</h1>
           </div>
 
 
@@ -148,7 +152,7 @@ export default function Home() {
         </div>
 
         <div className='Tecnologias'>
-          <IoBuild className='IconoTec' />
+          <BsWindows className='IconoTec' />
           <h1 className='h1Tec'>Escritorio</h1>
           <div className="flexTec">
             <span className="ItemsTecnologias">C#</span>
@@ -161,32 +165,32 @@ export default function Home() {
 
       {/* Mis Proyectos */}
 
-      <Titulo titulo={"Algunos de mis proyectos"} subtitulo={"Mis Proyectos"} />
+      <Titulo referencia={MisProyectos} titulo={"Algunos de mis proyectos"} subtitulo={"Mis Proyectos"} />
 
-      <Tarjeta titulo={"Ecommerce Web"} descripcion={"Esta aplicacion diseñada para que los usuarios se registren, visualicen y carguen su carrito para hacer su pedido"} github={"urlGit"} deploy={"https://login-boschialbano.vercel.app/"} tecnologias={["JS", "React JS", "GraphQl"]} foto={"/AppMartinWeb.png"} derecha={true} />
+      <Tarjeta titulo={"App Ministerio"} descripcion={"Aplicación móvil diseñada para el “Ministerio de Obras y Servicios Públicos”, con el fin de que la App brinde información a los usuarios, sobre los servicios públicos. además de permitir que los usuarios realicen sus reclamos."} github={"https://github.com/BoschiAlbano/Mobile_app_Ministerio"} deploy={""} tecnologias={["Ionic Framework", "React JS", "Express js"]} foto={"/Ministerio.png"} derecha={false} />
 
-      <Tarjeta titulo={"Primer Proyecto"} descripcion={"Esta es la descripcion del proyecto"} github={"urlGit"} deploy={"https://login-boschialbano.vercel.app/"} tecnologias={["JS", "React JS", "GraphQl"]} foto={"/AppMartinWeb.png"} derecha={false} />
+      <Tarjeta titulo={"E-Commerce"} descripcion={"Aplicacion de ventas para escritorio. (Control de Articulos, facturas, cuenta corriente, caja, reportes, etc.)"} github={"https://github.com/BoschiAlbano/App-Martin"} deploy={""} tecnologias={["C#", "Entity Framework", "Sql Server"]} foto={"/AppMartin.png"} derecha={true} />
 
-      <Tarjeta titulo={"Primer Proyecto"} descripcion={"Esta es la descripcion del proyecto"} github={"urlGit"} deploy={"https://login-boschialbano.vercel.app/"} tecnologias={["JS", "React JS", "GraphQl"]} foto={"/AppMartinWeb.png"} derecha={true} /> 
+      <Tarjeta titulo={"E-Commerce Web"} descripcion={"Aplicacion que permite realizar pedidos, armando tu carrito de compras."} github={"https://github.com/BoschiAlbano/App-Martin-Web"} deploy={"https://login-boschialbano.vercel.app/"} tecnologias={["Next js", "mongodb", "GraphQl"]} foto={"/AppMartinWeb.png"} derecha={false} /> 
 
 
       {/* Otros Proyectos */}
       <Titulo titulo={"¿Te interesaria conocer otros proyectos?"} subtitulo={"Proyectos Interesantes"} />
 
       <div className="Galeria mb-30">
-        <TarjetaChica github={"Repo de Git"} deploy={"Si tiene deploy"} titulo={"Aplicacion de noticias"} descripcion={"proyecto diseñado con react para consumir api de noticias"} tecnologias={["React JS", "Js", "Ionic Framework"]} />
+        <TarjetaChica github={"https://github.com/BoschiAlbano/Giphy-React"} deploy={"https://giffy-boschialbano.vercel.app/"} titulo={"giffy"} descripcion={"proyecto disñado para consumir Api de gifs"} tecnologias={["java Script", "React Js"]} />
 
 
-        <TarjetaChica github={"Repo de Git"} deploy={"Si tiene deploy"} titulo={"Aplicacion de noticias"} descripcion={"proyecto diseñado con react para consumir api de noticias"} tecnologias={["React JS", "Js", "Ionic Framework"]} />
+        <TarjetaChica github={""} deploy={"https://noticias-app-gamma.vercel.app/"} titulo={"Comics xkcd"} descripcion={"Curso de Next js - Youtube midudev"} tecnologias={["React JS", "java Script", "node js"]} />
 
 
-        <TarjetaChica github={"Repo de Git"} deploy={"Si tiene deploy"} titulo={"Aplicacion de noticias"} descripcion={"proyecto diseñado con react para consumir api de noticias"} tecnologias={["React JS", "Js", "Ionic Framework"]} />
+        <TarjetaChica github={""} deploy={""} titulo={"Sin Titulo"} descripcion={"Sin Descripcion"} tecnologias={[]} />
 
       </div>
 
       {/* Datos de Contacto */}
 
-      <Titulo titulo={"¿Quieres contactarme?"} subtitulo={"Datos de Contacto"} />
+      <Titulo referencia={DatoContacto} titulo={"¿Quieres contactarme?"} subtitulo={"Datos de Contacto"} />
 
       <Formulario />
 
@@ -196,7 +200,7 @@ export default function Home() {
       <div className="w-full border-t-[3px] pt-5 border-[#5E4A87]">
 
         <div className="flex flex-row justify-center text-center bg-gradient-to-r from-[#EA546C] to-[#598CBE] text-transparent bg-clip-text items-baseline mb-5">
-          <h1 className="text-[30px] sm:text-[50px] font-bold  text-left font-[Merienda]">Gracias por visitar mi sitio web!</h1>
+          <h1 className="text-[25px] sm:text-[50px] font-bold  text-left font-[Merienda]">Gracias por visitar mi sitio web!</h1>
         </div>
 
         <div className="w-full flex flex-row gap-2 mb-5 justify-center items-center">

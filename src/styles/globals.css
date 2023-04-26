@@ -15,7 +15,7 @@
 
 @media (prefers-color-scheme: dark) {
   :root {
-    --Fondo: 255, 255, 255;
+    --Fondo: 32, 32, 36;
     --Oscuro: 0, 0, 0;
     --Claro: 0, 0, 0;
   }
@@ -199,57 +199,38 @@ body::-webkit-scrollbar-thumb{
 .vibrate:hover{animation:vibrate 1.5s linear both} @keyframes vibrate{0%{transform:translate(0)}20%{transform:translate(-2px,2px)}40%{transform:translate(-2px,-2px)}60%{transform:translate(2px,2px)}80%{transform:translate(2px,-2px)}100%{transform:translate(0)}}
 
 
-.TarjetaGrandeFoto{
-  width: 100%;
-  display: grid;
-  grid-template-columns: 70% 30%;
+
+
+.display{
+    display: flex;
 }
 
-.TarjetaGrandeFotoOpuesto{
-  width: 100%;
-  display: grid;
-  grid-template-columns: 30% 70%;
+.position{
+  position: absolute;
+  width: 60%;
+}
+.foto{
+  width: 60%;
 }
 
-.TarjetaGrandeDatos{
-  width: 100%;
-  display: grid;
-  grid-template-columns: 30% 70%;
-}
-
-.TarjetaGrandeDatosOpuesto{
-  width: 100%;
-  display: grid;
-  grid-template-columns: 70% 30%;
-}
-
-
-@media (max-width: 640px) {
-  .TarjetaGrandeFoto{
-    position: relative;
+@media (max-width: 1000px) {
+  .display{
     width: 100%;
     display: grid;
     grid-template-columns: 100%;
-  }
-  
-  .TarjetaGrandeDatos{
-    position: relative;
-    width: 100%;
-    display: grid;
-    grid-template-columns: 100%;
+    justify-items: center;
   }
 
-  .TarjetaGrandeDatosOpuesto{
+  .position{
     position: relative;
     width: 100%;
-    display: grid;
-    grid-template-columns: 100%;
   }
 
-  .TarjetaGrandeFotoOpuesto{
-    position: relative;
+  .foto{
     width: 100%;
-    display: grid;
-    grid-template-columns: 100%;
+  }
+
+  .centrar{
+    text-align: center;
   }
 }
