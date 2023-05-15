@@ -26,7 +26,7 @@ export default function Home() {
   useEffect(() => {
 
     window.addEventListener('blur', () => {
-      document.title = '¡No te vayas! Dame Trabajo 😱'
+      document.title = '¡No te vayas! 😱'
     })
 
     window.addEventListener('focus', () => {
@@ -59,7 +59,7 @@ export default function Home() {
     <Head>
       <title>{tituto}</title>
       <meta name="description" content="Aplicacion Creada con nextJS" />
-      <link rel="icon" href="/favicon.ico" />
+      <link rel="icon" href="/Portafolio.ico" />
     </Head>
 
     <Header SobreMi={SobreMi} DatoContacto={DatoContacto} MisProyectos={MisProyectos}/>
@@ -105,7 +105,7 @@ export default function Home() {
           <div className="sm:text-xl text-lg">
             <h1>✔ Soy una persona autodidacta, responsable y comprometida con mi trabajo.</h1>
             <h1>✔ Constantemente estoy aprendiendo nuevas tecnologias y herramientas para mejorar mis habilidades.</h1>
-            <h1>✔ No dudes en <span className="font-bold">Contactarse</span> conmigo si tiene alguna pregunta.</h1>
+            <h1>✔ No dude en <span className="font-bold">Contactarse</span> conmigo si tiene alguna pregunta.</h1>
           </div>
 
         </div>
@@ -178,7 +178,7 @@ export default function Home() {
       <Titulo titulo={"¿Te interesaria conocer otros proyectos?"} subtitulo={"Proyectos Interesantes"} />
 
       <div className="Galeria mb-30">
-        <TarjetaChica github={"https://github.com/BoschiAlbano/Giphy-React"} deploy={"https://giffy-boschialbano.vercel.app/"} titulo={"giffy"} descripcion={"proyecto disñado para consumir Api de gifs"} tecnologias={["java Script", "React Js"]} />
+        <TarjetaChica github={"https://github.com/BoschiAlbano/Giphy-React"} deploy={"https://giffy-boschialbano.vercel.app/"} titulo={"giffy"} descripcion={"proyecto diseñado para consumir Api de gifs"} tecnologias={["java Script", "React Js"]} />
 
 
         <TarjetaChica github={""} deploy={"https://noticias-app-gamma.vercel.app/"} titulo={"Comics xkcd"} descripcion={"Curso de Next js - Youtube midudev"} tecnologias={["React JS", "java Script", "node js"]} />
@@ -204,7 +204,7 @@ export default function Home() {
         </div>
 
         <div className="w-full flex flex-row gap-2 mb-5 justify-center items-center">
-          <span onClick={() => copiar("albanob24@gmail.com")}><RiMailSendLine className='text-[3rem] text-[#A7A4A5] hover:text-[#ffffff]'/></span>
+          <span onClick={() => copiar("Boschi.albano.jose@gmail.com")}><RiMailSendLine className='text-[3rem] text-[#A7A4A5] hover:text-[#ffffff]'/></span>
           <a href={'https://github.com/BoschiAlbano'}><FaGithub className='text-[3rem] text-[#A7A4A5] hover:text-[#ffffff]'/></a>
           <a href={'No tengo'}><BsLinkedin className='text-[3rem] text-[#A7A4A5] hover:text-[#ffffff]'/></a>
         </div>

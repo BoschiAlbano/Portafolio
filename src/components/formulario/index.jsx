@@ -70,7 +70,7 @@ const Formulario = () => {
 
                 <div className="text-2xl flex items-center justify-start gap-3">
                     <RiMailSendLine className="text-4xl " />
-                    <h1>albanob24@gmail.com</h1>
+                    <h1>Boschi.albano.jose@gmail.com</h1>
                 </div>
 
                 {errors.Nombre?.type === 'required' && <p className="text-rose-200 text-1xl sm:text-2xl flex justify-start items-center gap-1"><FcCancel className="text-4xl"/>El campo Nombre es requerido</p>}
