@@ -92,7 +92,7 @@ export default function Home() {
       {/* Quien Soy? */}
       <div ref={SobreMi} className="saltar Columnas mt-[100px] p-0  sm:border sm:border-black sm:p-10 rounded-sm shadow-xl">
 
-        <Image alt='Boschi Albano Jose' src={"/Foto.jpg"} height={250} width={250} className="rounded-full"></Image>
+        <Image alt='Boschi Albano Jose' src={"/Foto2.jpeg"} height={250} width={250} className="rounded-full"></Image>
 
         <div className="w-full flex flex-col items-center sm:items-start text-start text-[rgba(255,255,255,0.9)]">
 
