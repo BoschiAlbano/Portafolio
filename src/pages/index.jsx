@@ -13,7 +13,9 @@ import { FaGithub } from 'react-icons/fa'
 import { BsLinkedin } from 'react-icons/bs'
 
 
-import { useEffect, useRef } from 'react'
+import { useEffect, useRef, useState } from 'react'
+
+import Alert from '@/components/alert'
 
 export default function Home() {
 
@@ -35,6 +37,7 @@ export default function Home() {
 
   }, []);
 
+  const [alert, SetAlert] = useState(false);
 
   function copiar(text) {
     const clipboard = window.navigator.clipboard;
@@ -51,7 +54,14 @@ export default function Home() {
       })
       .catch((error) => {
         console.error("Error al copiar texto al portapapeles: ", error);
-      });
+    });
+
+    SetAlert(true);
+    
+    setTimeout(() => {
+      SetAlert(false);
+    }, 3000);
+
   }
 
   return (<>
@@ -64,6 +74,9 @@ export default function Home() {
 
     <Header SobreMi={SobreMi} DatoContacto={DatoContacto} MisProyectos={MisProyectos}/>
 
+    {
+      alert ? <Alert SetAlert={SetAlert}/> : null
+    }
 
     <div className="flex flex-col justify-center items-center h-auto pt-[100px] px-3 sm:px-20">
 
@@ -169,9 +182,9 @@ export default function Home() {
 
       <Tarjeta titulo={"App Ministerio"} descripcion={"Aplicación móvil diseñada para el “Ministerio de Obras y Servicios Públicos”, con el fin de que la App brinde información a los usuarios, sobre los servicios públicos. además de permitir que los usuarios realicen sus reclamos."} github={"https://github.com/BoschiAlbano/Mobile_app_Ministerio"} deploy={""} tecnologias={["Ionic Framework", "React JS", "Express js"]} foto={"/Ministerio.png"} derecha={false} />
 
-      <Tarjeta titulo={"E-Commerce"} descripcion={"Aplicacion de ventas para escritorio. (Control de Articulos, facturas, cuenta corriente, caja, reportes, etc.)"} github={"https://github.com/BoschiAlbano/App-Martin"} deploy={""} tecnologias={["C#", "Entity Framework", "Sql Server"]} foto={"/AppMartin.png"} derecha={true} />
+      <Tarjeta titulo={"E-Commerce"} descripcion={"Aplicacion de ventas y facturacion para escritorio. (Control de Articulos, facturas, cuenta corriente, caja, reportes, etc.)"} github={"https://github.com/BoschiAlbano/App-Martin"} deploy={""} tecnologias={["C#", "Entity Framework", "Sql Server"]} foto={"/AppMartin.png"} derecha={true} />
 
-      <Tarjeta titulo={"E-Commerce Web"} descripcion={"Aplicacion que permite realizar pedidos, armando tu carrito de compras."} github={"https://github.com/BoschiAlbano/App-Martin-Web"} deploy={"https://login-boschialbano.vercel.app/"} tecnologias={["Next js", "mongodb", "GraphQl"]} foto={"/AppMartinWeb.png"} derecha={false} /> 
+      <Tarjeta titulo={"E-Commerce Web"} descripcion={"Aplicación para realizar pedidos. (Login, Register, Artículos, Carrito de Compras), Esta aplicación fue diseñada para trabajar en simultáneo con la aplicación de facturación hecha en c# donde llegan todos los pedidos."} github={"https://github.com/BoschiAlbano/App-Martin-Web"} deploy={"https://distrinova-martin.site/login"} tecnologias={["Next js", "Azure Sql", "GraphQl", "Azure app services"]} foto={"/Distrinova.png"} derecha={false} /> 
 
 
       {/* Otros Proyectos */}
@@ -206,7 +219,7 @@ export default function Home() {
         <div className="w-full flex flex-row gap-2 mb-5 justify-center items-center">
           <span onClick={() => copiar("Boschi.albano.jose@gmail.com")}><RiMailSendLine className='text-[3rem] text-[#A7A4A5] hover:text-[#ffffff]'/></span>
           <a href={'https://github.com/BoschiAlbano'}><FaGithub className='text-[3rem] text-[#A7A4A5] hover:text-[#ffffff]'/></a>
-          <a href={'No tengo'}><BsLinkedin className='text-[3rem] text-[#A7A4A5] hover:text-[#ffffff]'/></a>
+          <a href={'https://www.linkedin.com/in/albano-jose-boschi-692722277/'}><BsLinkedin className='text-[3rem] text-[#A7A4A5] hover:text-[#ffffff]'/></a>
         </div>
 
       </div>

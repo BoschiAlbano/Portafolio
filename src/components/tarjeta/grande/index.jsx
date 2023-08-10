@@ -34,7 +34,7 @@ const Tarjeta = ({ titulo, descripcion, github, deploy, tecnologias, foto, derec
                         <a className="text-[3rem] text-[#A7A4A5] hover:text-[#ffffff]" href={deploy}><ImLink /></a>
                     </div>
 
-                    <div className={`flex items-center z-[104] gap-1 ${derecha ? 'justify-start' : 'justify-end'}`}>
+                    <div className={`flex items-center flex-wrap z-[104] gap-1 ${derecha ? 'justify-start' : 'justify-end'}`}>
                             {tecnologias.map((value, index) => {
                                 return (
                                     <div key={index} className="flexTec">
