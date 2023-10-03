@@ -305,11 +305,16 @@ export default function Home() {
                     />
 
                     <TarjetaChica
-                        github={''}
+                        github={'https://github.com/BoschiAlbano/App-Peliculas'}
                         deploy={''}
-                        titulo={'Sin Titulo'}
-                        descripcion={'Sin Descripcion'}
-                        tecnologias={[]}
+                        titulo={'React Native - Expo'}
+                        descripcion={
+                            'Curso de react native usando expo y consumiendo api de peliculas'
+                        }
+                        tecnologias={['React Native', 'Expo', 'Axios']}
+                        descargar={
+                            './application-e21e8b7d-b88a-4d2a-8ff8-fddce4315037.apk'
+                        }
                     />
                 </div>
 
