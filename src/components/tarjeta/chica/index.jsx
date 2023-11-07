@@ -1,7 +1,7 @@
-import React from 'react';
-import { FaGithub } from 'react-icons/fa';
-import { ImLink } from 'react-icons/im';
-import { IoCloudDownload } from 'react-icons/io5';
+import React from "react";
+import { FaGithub } from "react-icons/fa";
+import { ImLink } from "react-icons/im";
+import { IoCloudDownload } from "react-icons/io5";
 const TarjetaChica = ({
     github,
     deploy,
@@ -27,10 +27,10 @@ const TarjetaChica = ({
                         <a
                             href={descargar}
                             download={textoDescarga}
-                            className="saltar bg-[#A7A4A5] text-center font-[Merienda] rounded-full text-black text-2xl p-3 flex justify-center items-center gap-3 hover:text-[#ffffff]"
+                            className="saltar bg-[#A7A4A5] text-center font-[Merienda] rounded-full text-black text-2xl p-3 flex justify-center items-center gap-3 hover:bg-[#ffffff]"
                         >
-                            {' '}
-                            <IoCloudDownload />
+                            {" "}
+                            <IoCloudDownload color="#202024" />
                         </a>
                     ) : null}
                 </div>

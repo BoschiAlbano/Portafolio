@@ -1,40 +1,40 @@
-import Image from 'next/image';
-import Head from 'next/head';
-import Header from './header';
+import Image from "next/image";
+import Head from "next/head";
+import Header from "./header";
 import {
     IoCloudDownload,
     IoCall,
     IoCodeSlash,
     IoServer,
     IoBuild,
-} from 'react-icons/io5';
-import { BsWindows } from 'react-icons/bs';
-import Titulo from '@/components/titulo';
-import Tarjeta from '@/components/tarjeta/grande';
-import TarjetaChica from '@/components/tarjeta/chica';
-import Formulario from '@/components/formulario';
+} from "react-icons/io5";
+import { BsWindows } from "react-icons/bs";
+import Titulo from "@/components/titulo";
+import Tarjeta from "@/components/tarjeta/grande";
+import TarjetaChica from "@/components/tarjeta/chica";
+import Formulario from "@/components/formulario";
 
-import { RiMailSendLine } from 'react-icons/ri';
-import { FaGithub } from 'react-icons/fa';
-import { BsLinkedin } from 'react-icons/bs';
+import { RiMailSendLine } from "react-icons/ri";
+import { FaGithub } from "react-icons/fa";
+import { BsLinkedin } from "react-icons/bs";
 
-import { useEffect, useRef, useState } from 'react';
+import { useEffect, useRef, useState } from "react";
 
-import Alert from '@/components/alert';
+import Alert from "@/components/alert";
 
 export default function Home() {
-    let tituto = 'Boschi Albano Jose';
+    let tituto = "Boschi Albano Jose";
 
     const SobreMi = useRef(null);
     const MisProyectos = useRef(null);
     const DatoContacto = useRef(null);
 
     useEffect(() => {
-        window.addEventListener('blur', () => {
-            document.title = '¡No te vayas! 😱';
+        window.addEventListener("blur", () => {
+            document.title = "¡No te vayas! 😱";
         });
 
-        window.addEventListener('focus', () => {
+        window.addEventListener("focus", () => {
             document.title = tituto;
         });
     }, []);
@@ -47,7 +47,7 @@ export default function Home() {
         if (!clipboard) {
             // Si el portapapeles no está disponible en el navegador, muestra un mensaje de error
             console.error(
-                'El portapapeles no está disponible en este navegador'
+                "El portapapeles no está disponible en este navegador"
             );
             return;
         }
@@ -55,10 +55,10 @@ export default function Home() {
         clipboard
             .writeText(text)
             .then(() => {
-                console.log('Texto copiado al portapapeles: ', text);
+                console.log("Texto copiado al portapapeles: ", text);
             })
             .catch((error) => {
-                console.error('Error al copiar texto al portapapeles: ', error);
+                console.error("Error al copiar texto al portapapeles: ", error);
             });
 
         SetAlert(true);
@@ -110,10 +110,10 @@ export default function Home() {
                     <div className="flex flex-col justify-between mt-[40px] gap-6 p-5 sm:flex sm:flex-row sm:justify-center sm:p-0">
                         <a
                             href="./CV.pdf"
-                            download={'Boschi Albano Jose'}
+                            download={"Boschi Albano Jose"}
                             className="saltar bg-gradient-to-r from-[#EA546C] to-[#598CBE] text-center font-[Merienda] rounded-md text-black text-2xl p-2 flex justify-center items-center gap-3"
                         >
-                            {' '}
+                            {" "}
                             Descargar CV
                             <IoCloudDownload />
                         </a>
@@ -121,12 +121,12 @@ export default function Home() {
                         <button
                             onClick={() =>
                                 DatoContacto.current.scrollIntoView({
-                                    behavior: 'smooth',
+                                    behavior: "smooth",
                                 })
                             }
                             className="saltar bg-gradient-to-r from-[#EA546C] to-[#598CBE] text-center font-[Merienda] rounded-md text-black text-2xl p-2 flex justify-center items-center gap-3"
                         >
-                            {' '}
+                            {" "}
                             Contactame <IoCall />
                         </button>
                     </div>
@@ -139,7 +139,7 @@ export default function Home() {
                 >
                     <Image
                         alt="Boschi Albano Jose"
-                        src={'/Foto2.jpeg'}
+                        src={"/Foto2.jpeg"}
                         height={250}
                         width={250}
                         className="rounded-full"
@@ -163,8 +163,8 @@ export default function Home() {
                                 habilidades.
                             </h1>
                             <h1>
-                                ✔ No dude en{' '}
-                                <span className="font-bold">Contactarse</span>{' '}
+                                ✔ No dude en{" "}
+                                <span className="font-bold">Contactarse</span>{" "}
                                 conmigo si tiene alguna pregunta.
                             </h1>
                         </div>
@@ -173,8 +173,8 @@ export default function Home() {
 
                 {/* Tecnologias */}
                 <Titulo
-                    titulo={'Tecnologias que use'}
-                    subtitulo={'Tecnologias'}
+                    titulo={"Tecnologias que use"}
+                    subtitulo={"Tecnologias"}
                 />
 
                 <div className="GrillaTecnologias">
@@ -230,91 +230,120 @@ export default function Home() {
 
                 <Titulo
                     referencia={MisProyectos}
-                    titulo={'Algunos de mis proyectos'}
-                    subtitulo={'Mis Proyectos'}
+                    titulo={"Algunos de mis proyectos"}
+                    subtitulo={"Mis Proyectos"}
                 />
 
                 <Tarjeta
-                    titulo={'App Ministerio'}
+                    titulo={"E-Commerce Web"}
                     descripcion={
-                        'Aplicación móvil diseñada para el “Ministerio de Obras y Servicios Públicos”, con el fin de que la App brinde información a los usuarios, sobre los servicios públicos. además de permitir que los usuarios realicen sus reclamos.'
+                        "Aplicacion web ecommerce, venta de articulos para interior del hogar. integrando mercado pago y usando SupaBase para el backend."
                     }
-                    github={
-                        'https://github.com/BoschiAlbano/Mobile_app_Ministerio'
-                    }
-                    deploy={''}
-                    tecnologias={['Ionic Framework', 'React JS', 'Express js']}
-                    foto={'/Ministerio.png'}
+                    github={"https://github.com/BoschiAlbano/ecommerce-luu"}
+                    deploy={"https://ecommerce-luu.vercel.app/home"}
+                    tecnologias={[
+                        "Next js",
+                        "Tailwind Css",
+                        "SupaBase",
+                        "Mercado Pago",
+                    ]}
+                    foto={"/ecommerce-luu.jpg"}
                     derecha={false}
                 />
 
                 <Tarjeta
-                    titulo={'E-Commerce'}
+                    titulo={"CMS - E-Commerce Web"}
                     descripcion={
-                        'Aplicacion de ventas y facturacion para escritorio. (Control de Articulos, facturas, cuenta corriente, caja, reportes, etc.)'
+                        "Aplicacion web para gestion de contenido de pagina web ecommerce"
                     }
-                    github={'https://github.com/BoschiAlbano/App-Martin'}
-                    deploy={''}
-                    tecnologias={['C#', 'Entity Framework', 'Sql Server']}
-                    foto={'/AppMartin.png'}
+                    github={"https://github.com/BoschiAlbano/ecommerce-luu-cms"}
+                    deploy={"https://ecommerce-luu-cms.vercel.app"}
+                    tecnologias={["React js", "Tailwind Css", "SupaBase"]}
+                    foto={"/ecommerce-luu-admin.jpg"}
                     derecha={true}
                 />
 
                 <Tarjeta
-                    titulo={'E-Commerce Web'}
+                    titulo={"E-Commerce Web"}
                     descripcion={
-                        'Aplicación para realizar pedidos. (Login, Register, Artículos, Carrito de Compras), Esta aplicación fue diseñada para trabajar en simultáneo con la aplicación de facturación hecha en c# donde llegan todos los pedidos.'
+                        "Aplicación para realizar pedidos. (Login, Register, Artículos, Carrito de Compras), Esta aplicación fue diseñada para trabajar en simultáneo con la aplicación de facturación hecha en c# donde llegan todos los pedidos."
                     }
-                    github={'https://github.com/BoschiAlbano/App-Martin-Web'}
-                    deploy={'https://distrinova-martin.site/login'}
+                    github={"https://github.com/BoschiAlbano/App-Martin-Web"}
+                    deploy={"https://distrinova-martin.site/login"}
                     tecnologias={[
-                        'Next js',
-                        'Azure Sql',
-                        'GraphQl',
-                        'Azure app services',
+                        "Next js",
+                        "Azure Sql",
+                        "GraphQl",
+                        "Azure app services",
                     ]}
-                    foto={'/Distrinova.png'}
+                    foto={"/Distrinova.png"}
+                    derecha={false}
+                />
+
+                <Tarjeta
+                    titulo={"E-Commerce Windows"}
+                    descripcion={
+                        "Aplicacion de ventas y facturacion para escritorio. (Control de Articulos, facturas, cuenta corriente, caja, reportes, etc.)"
+                    }
+                    github={"https://github.com/BoschiAlbano/App-Martin"}
+                    deploy={""}
+                    tecnologias={["C#", "Entity Framework", "Sql Server"]}
+                    foto={"/AppMartin.png"}
+                    derecha={true}
+                />
+
+                <Tarjeta
+                    titulo={"App Ministerio"}
+                    descripcion={
+                        "Aplicación móvil diseñada para el “Ministerio de Obras y Servicios Públicos”, con el fin de que la App brinde información a los usuarios, sobre los servicios públicos. además de permitir que los usuarios realicen sus reclamos."
+                    }
+                    github={
+                        "https://github.com/BoschiAlbano/Mobile_app_Ministerio"
+                    }
+                    deploy={""}
+                    tecnologias={["Ionic Framework", "React JS", "Express js"]}
+                    foto={"/Ministerio.png"}
                     derecha={false}
                 />
 
                 {/* Otros Proyectos */}
                 <Titulo
-                    titulo={'¿Te interesaria conocer otros proyectos?'}
-                    subtitulo={'Proyectos Interesantes'}
+                    titulo={"¿Te interesaria conocer otros proyectos?"}
+                    subtitulo={"Proyectos Interesantes"}
                 />
 
                 <div className="Galeria mb-30">
                     <TarjetaChica
-                        github={'https://github.com/BoschiAlbano/Giphy-React'}
-                        deploy={'https://giffy-boschialbano.vercel.app/'}
-                        titulo={'giffy'}
+                        github={"https://github.com/BoschiAlbano/App-Peliculas"}
+                        deploy={""}
+                        titulo={"React Native - Expo"}
                         descripcion={
-                            'proyecto diseñado para consumir Api de gifs'
+                            "Curso de react native usando expo y consumiendo api de peliculas"
                         }
-                        tecnologias={['java Script', 'React Js']}
+                        tecnologias={["React Native", "Expo", "Axios"]}
+                        descargar={
+                            "./application-e21e8b7d-b88a-4d2a-8ff8-fddce4315037.apk"
+                        }
+                    />
+
+                    <TarjetaChica
+                        github={"https://github.com/BoschiAlbano/Giphy-React"}
+                        deploy={"https://giffy-boschialbano.vercel.app/"}
+                        titulo={"giffy"}
+                        descripcion={
+                            "proyecto diseñado para consumir Api de gifs"
+                        }
+                        tecnologias={["java Script", "React Js"]}
                     />
 
                     <TarjetaChica
                         github={
-                            'https://github.com/BoschiAlbano/Comics_Noticias'
+                            "https://github.com/BoschiAlbano/Comics_Noticias"
                         }
-                        deploy={'https://noticias-app-gamma.vercel.app/'}
-                        titulo={'Comics xkcd'}
-                        descripcion={'Curso de Next js - Youtube midudev'}
-                        tecnologias={['React JS', 'java Script', 'node js']}
-                    />
-
-                    <TarjetaChica
-                        github={'https://github.com/BoschiAlbano/App-Peliculas'}
-                        deploy={''}
-                        titulo={'React Native - Expo'}
-                        descripcion={
-                            'Curso de react native usando expo y consumiendo api de peliculas'
-                        }
-                        tecnologias={['React Native', 'Expo', 'Axios']}
-                        descargar={
-                            './application-e21e8b7d-b88a-4d2a-8ff8-fddce4315037.apk'
-                        }
+                        deploy={"https://noticias-app-gamma.vercel.app/"}
+                        titulo={"Comics xkcd"}
+                        descripcion={"Curso de Next js - Youtube midudev"}
+                        tecnologias={["React JS", "java Script", "node js"]}
                     />
                 </div>
 
@@ -322,8 +351,8 @@ export default function Home() {
 
                 <Titulo
                     referencia={DatoContacto}
-                    titulo={'¿Quieres contactarme?'}
-                    subtitulo={'Datos de Contacto'}
+                    titulo={"¿Quieres contactarme?"}
+                    subtitulo={"Datos de Contacto"}
                 />
 
                 <Formulario />
@@ -340,17 +369,17 @@ export default function Home() {
                     <div className="w-full flex flex-row gap-2 mb-5 justify-center items-center">
                         <span
                             onClick={() =>
-                                copiar('Boschi.albano.jose@gmail.com')
+                                copiar("Boschi.albano.jose@gmail.com")
                             }
                         >
                             <RiMailSendLine className="text-[3rem] text-[#A7A4A5] hover:text-[#ffffff]" />
                         </span>
-                        <a href={'https://github.com/BoschiAlbano'}>
+                        <a href={"https://github.com/BoschiAlbano"}>
                             <FaGithub className="text-[3rem] text-[#A7A4A5] hover:text-[#ffffff]" />
                         </a>
                         <a
                             href={
-                                'https://www.linkedin.com/in/albano-jose-boschi-692722277/'
+                                "https://www.linkedin.com/in/albano-jose-boschi-692722277/"
                             }
                         >
                             <BsLinkedin className="text-[3rem] text-[#A7A4A5] hover:text-[#ffffff]" />
