@@ -9,18 +9,23 @@ import {
     IoBuild,
 } from "react-icons/io5";
 import { BsWindows } from "react-icons/bs";
-import Titulo from "@/components/titulo";
-import Tarjeta from "@/components/tarjeta/grande";
-import TarjetaChica from "@/components/tarjeta/chica";
-import Formulario from "@/components/formulario";
 
 import { RiMailSendLine } from "react-icons/ri";
 import { FaGithub } from "react-icons/fa";
 import { BsLinkedin } from "react-icons/bs";
 
-import { useEffect, useRef, useState } from "react";
+import React, { useEffect, useRef, useState, Suspense } from "react";
 
 import Alert from "@/components/alert";
+
+import { motion } from "framer-motion";
+import Reveal from "@/components/frameMotion/reveal";
+import Opacidad from "@/components/frameMotion/opacity";
+
+import Titulo from "@/components/titulo";
+import Tarjeta from "@/components/tarjeta/grande";
+import TarjetaChica from "@/components/tarjeta/chica";
+import Formulario from "@/components/formulario";
 
 export default function Home() {
     let tituto = "Boschi Albano Jose";
@@ -69,7 +74,7 @@ export default function Home() {
     }
 
     return (
-        <>
+        <motion.div>
             <Head>
                 <title>{tituto}</title>
                 <meta
@@ -79,161 +84,180 @@ export default function Home() {
                 <link rel="icon" href="/Portafolio.ico" />
             </Head>
 
-            <Header
-                SobreMi={SobreMi}
-                DatoContacto={DatoContacto}
-                MisProyectos={MisProyectos}
-            />
-
+            <Opacidad>
+                <Header
+                    SobreMi={SobreMi}
+                    DatoContacto={DatoContacto}
+                    MisProyectos={MisProyectos}
+                ></Header>
+            </Opacidad>
             {alert ? <Alert SetAlert={SetAlert} /> : null}
 
             <div className="flex flex-col justify-center items-center h-auto pt-[100px] px-3 sm:px-20">
                 {/* Saludo */}
-                <div className="text-center">
-                    <h1 className="text-[rgba(255,255,255,0.9)] text-3xl">
-                        Hola 👋 Soy
-                    </h1>
 
-                    <div className="w-full bg-gradient-to-r from-[#EA546C] to-[#598CBE] text-transparent bg-clip-text text-center font-[Merienda]">
-                        <p className="sm:text-[8rem] sm:leading-[7rem] text-[7rem] leading-[6rem]">
-                            Boschi
-                        </p>
-                        <p className="sm:text-[4.5rem] sm:leading-[7rem] text-[3.5rem] leading-[6rem]">
-                            Albano José
-                        </p>
+                <Opacidad>
+                    <div className="text-center">
+                        <h1 className="text-[rgba(255,255,255,0.9)] text-3xl">
+                            Hola 👋 Soy
+                        </h1>
+
+                        <div className="w-full bg-gradient-to-r from-[#EA546C] to-[#598CBE] text-transparent bg-clip-text text-center font-[Merienda]">
+                            <p className="sm:text-[8rem] sm:leading-[7rem] text-[7rem] leading-[6rem]">
+                                Boschi
+                            </p>
+                            <p className="sm:text-[4.5rem] sm:leading-[7rem] text-[3.5rem] leading-[6rem]">
+                                Albano José
+                            </p>
+                        </div>
+
+                        <h1 className="text-[rgba(255,255,255,0.9)] text-2xl">
+                            Tecnico Universitario en Programacion
+                        </h1>
+
+                        <div className="flex flex-col justify-between mt-[40px] gap-6 p-5 sm:flex sm:flex-row sm:justify-center sm:p-0">
+                            <a
+                                href="./CV.pdf"
+                                download={"Boschi Albano Jose"}
+                                className="saltar bg-gradient-to-r from-[#EA546C] to-[#598CBE] text-center font-[Merienda] rounded-md text-black text-2xl p-2 flex justify-center items-center gap-3"
+                            >
+                                {" "}
+                                Descargar CV
+                                <IoCloudDownload />
+                            </a>
+
+                            <button
+                                onClick={() =>
+                                    DatoContacto.current.scrollIntoView({
+                                        behavior: "smooth",
+                                    })
+                                }
+                                className="saltar bg-gradient-to-r from-[#EA546C] to-[#598CBE] text-center font-[Merienda] rounded-md text-black text-2xl p-2 flex justify-center items-center gap-3"
+                            >
+                                {" "}
+                                Contactame <IoCall />
+                            </button>
+                        </div>
                     </div>
-
-                    <h1 className="text-[rgba(255,255,255,0.9)] text-2xl">
-                        Tecnico Universitario en Programacion
-                    </h1>
-
-                    <div className="flex flex-col justify-between mt-[40px] gap-6 p-5 sm:flex sm:flex-row sm:justify-center sm:p-0">
-                        <a
-                            href="./CV.pdf"
-                            download={"Boschi Albano Jose"}
-                            className="saltar bg-gradient-to-r from-[#EA546C] to-[#598CBE] text-center font-[Merienda] rounded-md text-black text-2xl p-2 flex justify-center items-center gap-3"
-                        >
-                            {" "}
-                            Descargar CV
-                            <IoCloudDownload />
-                        </a>
-
-                        <button
-                            onClick={() =>
-                                DatoContacto.current.scrollIntoView({
-                                    behavior: "smooth",
-                                })
-                            }
-                            className="saltar bg-gradient-to-r from-[#EA546C] to-[#598CBE] text-center font-[Merienda] rounded-md text-black text-2xl p-2 flex justify-center items-center gap-3"
-                        >
-                            {" "}
-                            Contactame <IoCall />
-                        </button>
-                    </div>
-                </div>
-
+                </Opacidad>
                 {/* Quien Soy? */}
-                <div
-                    ref={SobreMi}
-                    className="saltar Columnas mt-[100px] p-0  sm:border sm:border-black sm:p-10 rounded-sm shadow-xl"
-                >
-                    <Image
-                        alt="Boschi Albano Jose"
-                        src={"/Foto2.jpeg"}
-                        height={250}
-                        width={250}
-                        className="rounded-full"
-                    ></Image>
+                <Reveal>
+                    <div
+                        ref={SobreMi}
+                        className="saltar Columnas mt-[100px] mb-[100px] p-0  sm:border sm:border-black sm:p-10 rounded-sm shadow-xl w-[80%]"
+                    >
+                        <Image
+                            alt="Boschi Albano Jose"
+                            src={"/Foto2.jpeg"}
+                            height={250}
+                            width={250}
+                            className="rounded-full"
+                        ></Image>
 
-                    <div className="w-full flex flex-col items-center sm:items-start text-start text-[rgba(255,255,255,0.9)]">
-                        <div className="w-[200px] flex flex-row text-center justify-center bg-gradient-to-r from-[#EA546C] to-[#598CBE] text-transparent bg-clip-text items-baseline gap-3">
-                            <h1 className="text-[40px] sm:text-[50px] font-bold  text-left font-[Merienda] w-[200px]">
-                                Sobre mí
-                            </h1>
-                        </div>
+                        <div className="w-full flex flex-col items-center sm:items-start text-start text-[rgba(255,255,255,0.9)]">
+                            <div className="w-[200px] flex flex-row text-center justify-center bg-gradient-to-r from-[#EA546C] to-[#598CBE] text-transparent bg-clip-text items-baseline gap-3">
+                                <h1 className="text-[40px] sm:text-[50px] font-bold  text-left font-[Merienda] w-[200px]">
+                                    Sobre mí
+                                </h1>
+                            </div>
 
-                        <div className="sm:text-xl text-lg">
-                            <h1>
-                                ✔ Soy una persona autodidacta, responsable y
-                                comprometida con mi trabajo.
-                            </h1>
-                            <h1>
-                                ✔ Constantemente estoy aprendiendo nuevas
-                                tecnologias y herramientas para mejorar mis
-                                habilidades.
-                            </h1>
-                            <h1>
-                                ✔ No dude en{" "}
-                                <span className="font-bold">Contactarse</span>{" "}
-                                conmigo si tiene alguna pregunta.
-                            </h1>
-                        </div>
-                    </div>
-                </div>
-
-                {/* Tecnologias */}
-                <Titulo
-                    titulo={"Tecnologias que use"}
-                    subtitulo={"Tecnologias"}
-                />
-
-                <div className="GrillaTecnologias">
-                    <div className="Tecnologias">
-                        <IoCodeSlash className="IconoTec" />
-                        <h1 className="h1Tec">Frontend</h1>
-                        <div className="flexTec">
-                            <span className="ItemsTecnologias">HTML5</span>
-                            <span className="ItemsTecnologias">Css</span>
-                            <span className="ItemsTecnologias">JavaScript</span>
-                            <span className="ItemsTecnologias">JSX</span>
-                            <span className="ItemsTecnologias">React Js</span>
-                            <span className="ItemsTecnologias">
-                                Tailwind Css
-                            </span>
+                            <div className="sm:text-xl text-lg">
+                                <h1>
+                                    ✔ Soy una persona autodidacta, responsable y
+                                    comprometida con mi trabajo.
+                                </h1>
+                                <h1>
+                                    ✔ Constantemente estoy aprendiendo nuevas
+                                    tecnologias y herramientas para mejorar mis
+                                    habilidades.
+                                </h1>
+                                <h1>
+                                    ✔ No dude en{" "}
+                                    <span className="font-bold">
+                                        Contactarse
+                                    </span>{" "}
+                                    conmigo si tiene alguna pregunta.
+                                </h1>
+                            </div>
                         </div>
                     </div>
+                </Reveal>
 
-                    <div className="Tecnologias">
-                        <IoServer className="IconoTec" />
-                        <h1 className="h1Tec">Backend</h1>
-                        <div className="flexTec">
-                            <span className="ItemsTecnologias">Node Js</span>
-                            <span className="ItemsTecnologias">Express Js</span>
-                            <span className="ItemsTecnologias">Sql Server</span>
-                            <span className="ItemsTecnologias">Mongo Db</span>
-                            <span className="ItemsTecnologias">GraphQl</span>
+                <Opacidad>
+                    {/* Tecnologias */}
+                    <Titulo titulo={""} subtitulo={"Tecnologias"} />
+                    <div className="GrillaTecnologias">
+                        <div className="Tecnologias">
+                            <IoCodeSlash className="IconoTec" />
+                            <h1 className="h1Tec">Frontend</h1>
+                            <div className="flexTec">
+                                <span className="ItemsTecnologias">HTML5</span>
+                                <span className="ItemsTecnologias">Css</span>
+                                <span className="ItemsTecnologias">
+                                    JavaScript
+                                </span>
+                                <span className="ItemsTecnologias">JSX</span>
+                                <span className="ItemsTecnologias">
+                                    React Js
+                                </span>
+                                <span className="ItemsTecnologias">
+                                    Tailwind Css
+                                </span>
+                            </div>
+                        </div>
+
+                        <div className="Tecnologias">
+                            <IoServer className="IconoTec" />
+                            <h1 className="h1Tec">Backend</h1>
+                            <div className="flexTec">
+                                <span className="ItemsTecnologias">
+                                    Node Js
+                                </span>
+                                <span className="ItemsTecnologias">
+                                    Express Js
+                                </span>
+                                <span className="ItemsTecnologias">
+                                    Sql Server
+                                </span>
+                                <span className="ItemsTecnologias">
+                                    Mongo Db
+                                </span>
+                                <span className="ItemsTecnologias">
+                                    GraphQl
+                                </span>
+                            </div>
+                        </div>
+
+                        <div className="Tecnologias">
+                            <IoBuild className="IconoTec" />
+                            <h1 className="h1Tec">Herramientas</h1>
+                            <div className="flexTec">
+                                <span className="ItemsTecnologias">GitHub</span>
+                                <span className="ItemsTecnologias">
+                                    Postman
+                                </span>
+                            </div>
+                        </div>
+
+                        <div className="Tecnologias">
+                            <BsWindows className="IconoTec" />
+                            <h1 className="h1Tec">Escritorio</h1>
+                            <div className="flexTec">
+                                <span className="ItemsTecnologias">C#</span>
+                                <span className="ItemsTecnologias">
+                                    Entity Framework
+                                </span>
+                            </div>
                         </div>
                     </div>
-
-                    <div className="Tecnologias">
-                        <IoBuild className="IconoTec" />
-                        <h1 className="h1Tec">Herramientas</h1>
-                        <div className="flexTec">
-                            <span className="ItemsTecnologias">GitHub</span>
-                            <span className="ItemsTecnologias">Postman</span>
-                        </div>
-                    </div>
-
-                    <div className="Tecnologias">
-                        <BsWindows className="IconoTec" />
-                        <h1 className="h1Tec">Escritorio</h1>
-                        <div className="flexTec">
-                            <span className="ItemsTecnologias">C#</span>
-                            <span className="ItemsTecnologias">
-                                Entity Framework
-                            </span>
-                        </div>
-                    </div>
-                </div>
+                </Opacidad>
 
                 {/* Mis Proyectos */}
-
                 <Titulo
                     referencia={MisProyectos}
                     titulo={"Algunos de mis proyectos"}
                     subtitulo={"Mis Proyectos"}
                 />
-
                 <Tarjeta
                     titulo={"E-Commerce Web"}
                     descripcion={
@@ -250,7 +274,6 @@ export default function Home() {
                     foto={"/ecommerce-luu.jpg"}
                     derecha={false}
                 />
-
                 <Tarjeta
                     titulo={"CMS - E-Commerce Web"}
                     descripcion={
@@ -262,7 +285,6 @@ export default function Home() {
                     foto={"/ecommerce-luu-admin.jpg"}
                     derecha={true}
                 />
-
                 <Tarjeta
                     titulo={"E-Commerce Web"}
                     descripcion={
@@ -279,7 +301,6 @@ export default function Home() {
                     foto={"/Distrinova.png"}
                     derecha={false}
                 />
-
                 <Tarjeta
                     titulo={"E-Commerce Windows"}
                     descripcion={
@@ -291,7 +312,6 @@ export default function Home() {
                     foto={"/AppMartin.png"}
                     derecha={true}
                 />
-
                 <Tarjeta
                     titulo={"App Ministerio"}
                     descripcion={
@@ -305,60 +325,60 @@ export default function Home() {
                     foto={"/Ministerio.png"}
                     derecha={false}
                 />
-
                 {/* Otros Proyectos */}
                 <Titulo
                     titulo={"¿Te interesaria conocer otros proyectos?"}
                     subtitulo={"Proyectos Interesantes"}
                 />
 
-                <div className="Galeria mb-30">
-                    <TarjetaChica
-                        github={"https://github.com/BoschiAlbano/App-Peliculas"}
-                        deploy={""}
-                        titulo={"React Native - Expo"}
-                        descripcion={
-                            "Curso de react native usando expo y consumiendo api de peliculas"
-                        }
-                        tecnologias={["React Native", "Expo", "Axios"]}
-                        descargar={
-                            "./application-e21e8b7d-b88a-4d2a-8ff8-fddce4315037.apk"
-                        }
-                    />
+                <Opacidad>
+                    <div className="Galeria mb-30">
+                        <TarjetaChica
+                            github={
+                                "https://github.com/BoschiAlbano/App-Peliculas"
+                            }
+                            deploy={""}
+                            titulo={"React Native - Expo"}
+                            descripcion={
+                                "Curso de react native usando expo y consumiendo api de peliculas"
+                            }
+                            tecnologias={["React Native", "Expo", "Axios"]}
+                            descargar={
+                                "./application-e21e8b7d-b88a-4d2a-8ff8-fddce4315037.apk"
+                            }
+                        />
 
-                    <TarjetaChica
-                        github={"https://github.com/BoschiAlbano/Giphy-React"}
-                        deploy={"https://giffy-boschialbano.vercel.app/"}
-                        titulo={"giffy"}
-                        descripcion={
-                            "proyecto diseñado para consumir Api de gifs"
-                        }
-                        tecnologias={["java Script", "React Js"]}
-                    />
+                        <TarjetaChica
+                            github={
+                                "https://github.com/BoschiAlbano/Giphy-React"
+                            }
+                            deploy={"https://giffy-boschialbano.vercel.app/"}
+                            titulo={"giffy"}
+                            descripcion={
+                                "proyecto diseñado para consumir Api de gifs"
+                            }
+                            tecnologias={["java Script", "React Js"]}
+                        />
 
-                    <TarjetaChica
-                        github={
-                            "https://github.com/BoschiAlbano/Comics_Noticias"
-                        }
-                        deploy={"https://noticias-app-gamma.vercel.app/"}
-                        titulo={"Comics xkcd"}
-                        descripcion={"Curso de Next js - Youtube midudev"}
-                        tecnologias={["React JS", "java Script", "node js"]}
-                    />
-                </div>
-
+                        <TarjetaChica
+                            github={
+                                "https://github.com/BoschiAlbano/Comics_Noticias"
+                            }
+                            deploy={"https://noticias-app-gamma.vercel.app/"}
+                            titulo={"Comics xkcd"}
+                            descripcion={"Curso de Next js - Youtube midudev"}
+                            tecnologias={["React JS", "java Script", "node js"]}
+                        />
+                    </div>
+                </Opacidad>
                 {/* Datos de Contacto */}
-
                 <Titulo
                     referencia={DatoContacto}
                     titulo={"¿Quieres contactarme?"}
                     subtitulo={"Datos de Contacto"}
                 />
-
                 <Formulario />
-
                 {/* footer */}
-
                 <div className="w-full border-t-[3px] pt-5 border-[#5E4A87]">
                     <div className="flex flex-row justify-center text-center bg-gradient-to-r from-[#EA546C] to-[#598CBE] text-transparent bg-clip-text items-baseline mb-5">
                         <h1 className="text-[25px] sm:text-[50px] font-bold  text-left font-[Merienda]">
@@ -387,6 +407,6 @@ export default function Home() {
                     </div>
                 </div>
             </div>
-        </>
+        </motion.div>
     );
 }

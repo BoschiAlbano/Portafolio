@@ -2,6 +2,7 @@ import React from "react";
 import { FaGithub } from "react-icons/fa";
 import { ImLink } from "react-icons/im";
 import { IoCloudDownload } from "react-icons/io5";
+
 const TarjetaChica = ({
     github,
     deploy,
@@ -13,7 +14,7 @@ const TarjetaChica = ({
 }) => {
     return (
         <div className="EfectoDegrade p-1 rounded-2xl">
-            <div className="Galeria_Tarjetas mb-0 p-3 rounded-2xl shadow-sm shadow-[#000000] bg-[#202024]">
+            <div className="Galeria_Tarjetas mb-0 p-3 rounded-2xl shadow-sm shadow-[#000000] bg-[#202024] flex flex-col justify-between items-center">
                 <div className="flex flex-row justify-end items-center gap-5">
                     <a href={github}>
                         <FaGithub className="text-[3rem] text-[#A7A4A5] hover:text-[#ffffff]" />
