@@ -97,7 +97,7 @@ export default function Home() {
                 {/* Saludo */}
 
                 <Opacidad>
-                    <div className="text-center">
+                    <div className="w text-center ">
                         <h1 className="text-[rgba(255,255,255,0.9)] text-3xl">
                             Hola 👋 Soy
                         </h1>
@@ -144,14 +144,14 @@ export default function Home() {
                 <Reveal>
                     <div
                         ref={SobreMi}
-                        className="saltar Columnas mt-[100px] mb-[100px] p-0  sm:border sm:border-black sm:p-10 rounded-sm shadow-xl w-[80%]"
+                        className=" Columnas mt-[100px] mb-[100px] p-0  sm:p-10 rounded-sm shadow-xl w-[100%]"
                     >
                         <Image
                             alt="Boschi Albano Jose"
                             src={"/Foto2.jpeg"}
                             height={250}
                             width={250}
-                            className="rounded-full"
+                            className="rounded-full "
                         ></Image>
 
                         <div className="w-full flex flex-col items-center sm:items-start text-start text-[rgba(255,255,255,0.9)]">
@@ -328,11 +328,29 @@ export default function Home() {
                 {/* Otros Proyectos */}
                 <Titulo
                     titulo={"¿Te interesaria conocer otros proyectos?"}
-                    subtitulo={"Proyectos Interesantes"}
+                    subtitulo={"Cursos"}
                 />
 
                 <Opacidad>
                     <div className="Galeria mb-30">
+                        <TarjetaChica
+                            github={
+                                "https://github.com/BoschiAlbano/Curso-NextJS-14-Oficial"
+                            }
+                            deploy={
+                                "https://curso-next-js-14-oficial.vercel.app"
+                            }
+                            titulo={"Next js 14"}
+                            descripcion={
+                                "Curso de Next js 14 - Pagina Oficial de Next js - Vercel"
+                            }
+                            tecnologias={[
+                                "next-js 14",
+                                "tailwind css",
+                                "NextAuth",
+                            ]}
+                        />
+
                         <TarjetaChica
                             github={
                                 "https://github.com/BoschiAlbano/App-Peliculas"
@@ -350,24 +368,28 @@ export default function Home() {
 
                         <TarjetaChica
                             github={
-                                "https://github.com/BoschiAlbano/Giphy-React"
+                                "https://github.com/BoschiAlbano/Comics_Noticias"
                             }
-                            deploy={"https://giffy-boschialbano.vercel.app/"}
-                            titulo={"giffy"}
-                            descripcion={
-                                "proyecto diseñado para consumir Api de gifs"
-                            }
-                            tecnologias={["java Script", "React Js"]}
+                            deploy={"https://noticias-app-gamma.vercel.app/"}
+                            titulo={"Next js 12"}
+                            descripcion={"Curso de Next js - Youtube midudev"}
+                            tecnologias={[
+                                "next-js 12",
+                                "java-Script",
+                                "node-js",
+                            ]}
                         />
 
                         <TarjetaChica
                             github={
-                                "https://github.com/BoschiAlbano/Comics_Noticias"
+                                "https://github.com/BoschiAlbano/Giphy-React"
                             }
-                            deploy={"https://noticias-app-gamma.vercel.app/"}
-                            titulo={"Comics xkcd"}
-                            descripcion={"Curso de Next js - Youtube midudev"}
-                            tecnologias={["React JS", "java Script", "node js"]}
+                            deploy={"https://giffy-boschialbano.vercel.app/"}
+                            titulo={"React js"}
+                            descripcion={
+                                "Curso de react js, Consumir Api de gifs"
+                            }
+                            tecnologias={["React-Js", "Materialize"]}
                         />
                     </div>
                 </Opacidad>
